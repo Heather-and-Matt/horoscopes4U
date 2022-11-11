@@ -21,16 +21,16 @@ const horoApp = {};
 horoApp.endpoint = `https://aztro.sameerkumar.website/`;
 
 // Method to go get horoscope from aztro
-horoApp.displayHoroscope = function (query) {
+horoApp.getHoroscope = function (query) {
 
     // Using the URL() contructor to get a new object back without endpoint url in it. This simplifies it for us to add on things like query parameters
     const url = new URL(horoApp.endpoint);
-    console.log(url);
+    // console.log(url);
 
     // search parameters
     url.search = new URLSearchParams({
         sign: "capricorn",
-        day: "today",
+        day: "tomorrow",
         q: query
     });
 
@@ -46,15 +46,40 @@ horoApp.displayHoroscope = function (query) {
         })
         .then(function (jsonData) {
             // The parsed JSON data is then received by this .then callback function from the previous .then as its parameter. Now we can use it in this callback like any other object
-            console.log(jsonData);
+            // We are targetting the id=horoscope tag and seting the HTML of it to a blank string
+
+            // document.querySelector("#horoscope").innerHTML = "";
+
+            horoApp.displayHoroscope(jsonData.description);
+
+
+
+            // some test code
+            // const horoscope = jsonData.description;
+
+            // const paragraphAries = document.querySelector('p.aries');
+            // paragraphAries.innerHTML = `${horoscope}`;
+            // console.log(horoscope);
         })
+    // .then() x 2
+    // .json()
 }
 
+horoApp.displayHoroscope = function (fortune) {
+    console.log(fortune);
+};
+
+
+
+
+
+
 horoApp.getUserInput = function () {
-    horoApp.displayHoroscope();
+
 }
 
 horoApp.init = function () {
+    horoApp.getHoroscope();
     horoApp.getUserInput();
 }
 
