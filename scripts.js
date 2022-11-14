@@ -29,7 +29,7 @@ horoApp.getHoroscope = function (query) {
 
     // search parameters
     url.search = new URLSearchParams({
-        sign: "capricorn",
+        sign: "aries",
         day: "tomorrow",
         q: query
     });
@@ -46,11 +46,11 @@ horoApp.getHoroscope = function (query) {
         })
         .then(function (jsonData) {
             // The parsed JSON data is then received by this .then callback function from the previous .then as its parameter. Now we can use it in this callback like any other object
-            // We are targetting the id=horoscope tag and seting the HTML of it to a blank string
-
+            // We are targetting the id=horoscope tag and setting the HTML of it to a blank string
+            console.log(jsonData);
             // document.querySelector("#horoscope").innerHTML = "";
 
-            horoApp.displayHoroscope(jsonData.description);
+            horoApp.displayHoroscope(jsonData);
 
 
 
@@ -65,8 +65,29 @@ horoApp.getHoroscope = function (query) {
     // .json()
 }
 
+
+// Create a function to display our horocope to the page
+// horoApp.displayHoroscope()
 horoApp.displayHoroscope = function (fortune) {
     console.log(fortune);
+
+    // Create a paragraph element
+    const horoscopeDes = document.createElement("p");
+    // Add the horoscope description
+    horoscopeDes.innerText = fortune.description;
+    console.log(horoscopeDes);
+    // Add the horoscope lucky numbers
+    const horoscopeNum = document.createElement("p");
+    horoscopeNum.innerText = fortune.lucky_number;
+    console.log(horoscopeNum);
+    const horoContainer = document.createElement("li");
+    // Creating a class on the li element
+    horoContainer.classList.add("fortune");
+    horoContainer.appendChild(horoscopeDes);
+    horoContainer.appendChild(horoscopeNum);
+    console.log(horoContainer);
+    document.querySelector("#horoFortune").append(horoContainer);
+
 };
 
 
