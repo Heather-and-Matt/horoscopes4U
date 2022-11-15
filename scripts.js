@@ -1,16 +1,18 @@
 //  PSEUDOCODE 
 
-// Create a horoscope app that gives users present-day horoscope. 
+// Create a horoscope app object that gives users present-day horoscope (horoApp).
 
 // Letting the user choose their horoscope from a drop down menu holding all 12 astrological signs
-// Eventlistener listening for the user to submit one of the 12 astrological signs
-// Store user's choice in a variable
-// Pass that variable to our API endpoint
-// Then make our fetch call
-// Call the API to get back horoscope information based on user's choice
-// Display results to the page
-// Create new paragraph element and add horoscope info to it
-// Clear previous horoscope when user makes another choice
+// When mouse or keyboards clicks on the 'submit' button, our method (getUserInput) gets the users selection and updates the variable (selection).
+// Create a method (horoApp.getHoroscope) that makes API calls using the fetch() method, and is passed the user selection as a parameter (astroSign)
+// Then make our Fetch API call
+// If our API call is successful, our results (chosen horoscope description) will be displayed on a paragraph element in a 'li', which in turn is in a 'ul' with an id="horoFortune"
+// If the user wants to get a horoscope for another astrological sign, the previous horoscope description will clear (("#horoFortune").innerHTML = "";) to make way for the new horoscope description
+// If the API call fails, display an error message
+
+// Create an init method (horoApp.init) to get the ball rolling in the set up of the app.
+// - calls the local method (getUserInput) after the submit button is clicked after user has chosen astrological sign.
+
 
 
 
@@ -30,7 +32,7 @@ horoApp.getHoroscope = function (astroSign) {
     // search parameters
     url.search = new URLSearchParams({
         sign: astroSign,
-        day: "today",
+        day: "tody",
     });
 
     //Taking our url object, ready to use full url, including query params, and we're going to use this to call the API using fetch.
@@ -39,30 +41,38 @@ horoApp.getHoroscope = function (astroSign) {
     })
         .then(function (response) {
             // After getting API response, a response object is passed to .then's callback function. We then need to parse this object for our JSON data. 
+            // console.log(response);
             // To do this we call built-in .json() method into the response object and then return the result of our callback
             // console.log(response.json())
-            return response.json();
+            // We also want to throw an error in case our fetch() call is unsuccessful (i.e. response.ok is false.)
+            // To do this we want to skip over running the second .then() and instead have another function execute some error handling behaviour
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error(response.statusText);
+            }
         })
         .then(function (jsonData) {
+            // console.log(jsonData);
             // The parsed JSON data is then received by this .then callback function from the previous .then as its parameter. Now we can use it in this callback like any other object
             // We are targetting the id=horoscope tag and setting the HTML of it to a blank string
             // console.log(jsonData);
             document.querySelector("#horoFortune").innerHTML = "";
 
             horoApp.displayHoroscope(jsonData);
-
-
-
-            // some test code
-            // const horoscope = jsonData.description;
-
-            // const paragraphAries = document.querySelector('p.aries');
-            // paragraphAries.innerHTML = `${horoscope}`;
-            // console.log(horoscope);
         })
+        // The error is caught here and we pass what was thrown into the .catch() method and an alert will be sent to user depending on the error
+        .catch(function (err) {
+            // console.log(err);
+            if (err.message === "Bad Request") {
+                alert("We couldn't find a match for that day! Please choose yesterday, today or tomorrow")
+            } else {
+                alert("Something went wrong. No idea what. Trying my best")
+            }
+        });
     // .then() x 2
     // .json()
-}
+};
 
 
 // Create a function to display our horocope to the page
