@@ -1,3 +1,4 @@
+
 //  PSEUDOCODE 
 
 // Create a horoscope app that gives users present-day horoscope. 
@@ -21,17 +22,16 @@ const horoApp = {};
 horoApp.endpoint = `https://aztro.sameerkumar.website/`;
 
 // Method to go get horoscope from aztro
-horoApp.displayHoroscope = function (query) {
+horoApp.getHoroscope = function (astroSign) {
 
     // Using the URL() contructor to get a new object back without endpoint url in it. This simplifies it for us to add on things like query parameters
     const url = new URL(horoApp.endpoint);
-    console.log(url);
+    // console.log(url);
 
     // search parameters
     url.search = new URLSearchParams({
-        sign: "capricorn",
+        sign: astroSign,
         day: "today",
-        q: query
     });
 
     //Taking our url object, ready to use full url, including query params, and we're going to use this to call the API using fetch.
@@ -46,15 +46,64 @@ horoApp.displayHoroscope = function (query) {
         })
         .then(function (jsonData) {
             // The parsed JSON data is then received by this .then callback function from the previous .then as its parameter. Now we can use it in this callback like any other object
-            console.log(jsonData);
+            // We are targetting the id=horoscope tag and setting the HTML of it to a blank string
+            // console.log(jsonData);
+            document.querySelector("#horoFortune").innerHTML = "";
+
+            horoApp.displayHoroscope(jsonData);
+
+
+
+            // some test code
+            // const horoscope = jsonData.description;
+
+            // const paragraphAries = document.querySelector('p.aries');
+            // paragraphAries.innerHTML = `${horoscope}`;
+            // console.log(horoscope);
         })
+    // .then() x 2
+    // .json()
 }
 
+
+// Create a function to display our horocope to the page
+// horoApp.displayHoroscope()
+horoApp.displayHoroscope = function (fortune) {
+    console.log(fortune);
+
+    // Create a paragraph element
+    const horoscopeDes = document.createElement("p");
+    // Add the horoscope description
+    horoscopeDes.innerText = fortune.description;
+    console.log(horoscopeDes);
+    // Add the horoscope lucky numbers
+    // const horoscopeNum = document.createElement("p");
+    // horoscopeNum.innerText = fortune.lucky_number;
+    // console.log(horoscopeNum);
+    //creating li container
+    const horoContainer = document.createElement("li");
+    // Creating a class on the li element
+    horoContainer.classList.add("fortune");
+    // Adding the p to the li
+    horoContainer.appendChild(horoscopeDes);
+    // horoContainer.appendChild(horoscopeNum);
+    console.log(horoContainer);
+    // Appending the horoContainer li to the ul (by queryselecting selecting its id=horoFortune)
+    document.querySelector("#horoFortune").append(horoContainer);
+
+};
+
+// This is the function that will get us the user's input
 horoApp.getUserInput = function () {
-    horoApp.displayHoroscope();
+    document.querySelector("#starSign").addEventListener("change", function () {
+        const selection = this.value;
+        console.log(selection);
+        horoApp.getHoroscope(selection);
+    })
 }
 
 horoApp.init = function () {
+    // horoApp.getHoroscope();
     horoApp.getUserInput();
 }
 
