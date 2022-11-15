@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,78 +8,119 @@
     <title>Daily Horoscope</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
+
 <body>
     <header>
         <h1>Daily Horoscope for you!</h1>
         <img src="" alt="">
     </header>
     <main>
+        <!-- Signs and Birthdays  -->
         <p>Find your sign below!</p>
         <div class="wrapper">
-        <ul>
-            <li>
-                <h2>Aries</h2>
-                <p>Mar 21 - Apr 19</p>
-            </li>
-            <li>
-                <h2>Taurus</h2>
-                <p>Apr 20 - May 20</p>
-            </li>
-            <li>
-                <h2>Gemini</h2>
-                <p>May 21 - Jun 20</p>
-            </li>
-            <li>
-                <h2>Cancer</h2>
-                <p>Jun 21 - Jul 22</p>
-            </li>
-            <li>
-                <h2>Leo</h2>
-                <p>Jul 23 - Aug 22</p>
-            </li>
-            <li>
-                <h2>Virgo</h2>
-                <p>Aug 23 - Sep 22</p>
-            </li>
-            <li>
-                <h2>Libra</h2>
-                <p>Sep 23 - Oct 22</p>
-            </li>
-            <li>
-                <h2>Scorpio</h2>
-                <p>Oct 23 - Nov 21</p>
-            </li>
-            <li>
-                <h2>Sagittarius</h2>
-                <p>Nov 22 - Dec 21</p>
-            </li>
-            <li>
-                <h2>Capricorn</h2>
-                <p>Dec 22 - Jan 19</p>
-            </li>
-            <li>
-                <h2>Aquarius</h2>
-                <p>Jan 20 - Feb 18</p>
-            </li>
-            <li>
-                <h2>Pisces</h2>
-                <p>Feb 19 - Mar 20</p>
-            </li>
-        </ul>
+            <ul>
+                <li>
+                    <img src="" alt="">
+                    <h2>Aries</h2>
+                    <p>Mar 21 - Apr 19</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <h2>Taurus</h2>
+                    <p>Apr 20 - May 20</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <h2>Gemini</h2>
+                    <p>May 21 - Jun 20</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <h2>Cancer</h2>
+                    <p>Jun 21 - Jul 22</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <h2>Leo</h2>
+                    <p>Jul 23 - Aug 22</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <h2>Virgo</h2>
+                    <p>Aug 23 - Sep 22</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <h2>Libra</h2>
+                    <p>Sep 23 - Oct 22</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <h2>Scorpio</h2>
+                    <p>Oct 23 - Nov 21</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <h2>Sagittarius</h2>
+                    <p>Nov 22 - Dec 21</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <h2>Capricorn</h2>
+                    <p>Dec 22 - Jan 19</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <h2>Aquarius</h2>
+                    <p>Jan 20 - Feb 18</p>
+                </li>
+                <li>
+                    <img src="" alt="">
+                    <h2>Pisces</h2>
+                    <p>Feb 19 - Mar 20</p>
+                </li>
+            </ul>
+            <!-- Instructions section -->
+            <section class="textContainer">
+                <h3>Find your daily horoscope here!</h3>
+                <p>Please choose your star sign, based on your date of birth as seen above!</p>
+            </section>
+            <!-- Form section (for horoscope dropdown) -->
+            <section class="formSection">
+                <form action="">
+                    <label for="starSign">Select your sign:</label>
+                    <select name="starSign" id="starSign">
+                        <option value="aries">Aries</option>
+                        <option value="taurus">Taurus</option>
+                        <option value="gemini">Gemini</option>
+                        <option value="cancer">Cancer</option>
+                        <option value="leo">Leo</option>
+                        <option value="virgo">Virgo</option>
+                        <option value="libra">Libra</option>
+                        <option value="scorpio">Scorpio</option>
+                        <option value="sagittarius">Sagittarius</option>
+                        <option value="capricorn">Capricorn</option>
+                        <option value="aquarius">Aquarius</option>
+                        <option value="pisces">Pisces</option>
+                    </select>
+                    <!-- <button type="submit">Submit</button> -->
+                </form>
+                <button onclick="horoApp.getUserInput()">Submit</button>
+            </section>
+        </div> <!-- Wrapper closing div -->
+        <div>
+            <ul id="horoFortune">
+                <!-- Our horoscope will be added into here -->
+            </ul>
         </div>
-
-        <h3>Find your daily horoscope here!</h3>
-            <p>Please choose your star sign, based on your date of birth as seen above!</p>
-        <h2></h2>
-            <p></p>
-            <div>
-                
-            </div>
-
-    <script src="scripts.js"></script>
     </main>
+
+
     <footer>
 
     </footer>
+    <!-- JS script -->
+    <script src="scripts.js"></script>
 </body>
+
 </html>
