@@ -32,7 +32,7 @@ horoApp.getHoroscope = function (astroSign) {
     // search parameters
     url.search = new URLSearchParams({
         sign: astroSign,
-        day: "tody",
+        day: "today",
     });
 
     //Taking our url object, ready to use full url, including query params, and we're going to use this to call the API using fetch.
@@ -53,7 +53,7 @@ horoApp.getHoroscope = function (astroSign) {
             }
         })
         .then(function (jsonData) {
-            // console.log(jsonData);
+            console.log(jsonData);
             // The parsed JSON data is then received by this .then callback function from the previous .then as its parameter. Now we can use it in this callback like any other object
             // We are targetting the id=horoscope tag and setting the HTML of it to a blank string
             // console.log(jsonData);
