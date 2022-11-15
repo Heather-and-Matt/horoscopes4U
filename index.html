@@ -15,7 +15,7 @@
         <img src="" alt="">
     </header>
     <main>
-        <!-- Signs and Birthdays  -->
+        <!-- Signs and birthdays -->
         <p>Find your sign below!</p>
         <div class="wrapper">
             <ul>
@@ -87,9 +87,10 @@
             </section>
             <!-- Form section (for horoscope dropdown) -->
             <section class="formSection">
-                <form action="">
+                <form action="submit">
                     <label for="starSign">Select your sign:</label>
                     <select name="starSign" id="starSign">
+                        <option value="none">Select an Option</option>
                         <option value="aries">Aries</option>
                         <option value="taurus">Taurus</option>
                         <option value="gemini">Gemini</option>
@@ -103,9 +104,8 @@
                         <option value="aquarius">Aquarius</option>
                         <option value="pisces">Pisces</option>
                     </select>
-                    <!-- <button type="submit">Submit</button> -->
+                    <button type="submit">Submit</button>
                 </form>
-                <button onclick="horoApp.getUserInput()">Submit</button>
             </section>
         </div> <!-- Wrapper closing div -->
         <div>
@@ -114,13 +114,12 @@
             </ul>
         </div>
     </main>
-
-
     <footer>
-
+        <p>Created at<a href="www.junocollege.com"> Juno College</a>by Heather & Matt</p>
     </footer>
     <!-- JS script -->
-    <script src="scripts.js"></script>
+    <script src="app.js"></script>
+
 </body>
 
 </html>
