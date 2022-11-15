@@ -87,7 +87,7 @@
             </section>
             <!-- Form section (for horoscope dropdown) -->
             <section class="formSection">
-                <form action="submit">
+                <form action="">
                     <label for="starSign">Select your sign:</label>
                     <select name="starSign" id="starSign">
                         <option value="aries">Aries</option>
@@ -103,8 +103,9 @@
                         <option value="aquarius">Aquarius</option>
                         <option value="pisces">Pisces</option>
                     </select>
-                    <button type="submit">Submit</button>
+                    <!-- <button type="submit">Submit</button> -->
                 </form>
+                <button onclick="horoApp.getUserInput()">Submit</button>
             </section>
         </div> <!-- Wrapper closing div -->
         <div>

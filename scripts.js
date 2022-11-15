@@ -20,8 +20,8 @@ const horoApp = {};
 // Let's save our api key and the endpoint we want to hit to properties on our namespace object, so that we have them easily available to reference throughout our code:
 horoApp.endpoint = `https://aztro.sameerkumar.website/`;
 
-// Method to go get horoscope from aztro
-horoApp.getHoroscope = function (query) {
+// Method to go get horoscope from aztro API
+horoApp.getHoroscope = function (astroSign) {
 
     // Using the URL() contructor to get a new object back without endpoint url in it. This simplifies it for us to add on things like query parameters
     const url = new URL(horoApp.endpoint);
@@ -29,7 +29,7 @@ horoApp.getHoroscope = function (query) {
 
     // search parameters
     url.search = new URLSearchParams({
-        sign: query,
+        sign: astroSign,
         day: "today",
     });
 
@@ -68,13 +68,13 @@ horoApp.getHoroscope = function (query) {
 // Create a function to display our horocope to the page
 // horoApp.displayHoroscope()
 horoApp.displayHoroscope = function (fortune) {
-    console.log(fortune);
+    // console.log(fortune);
 
     // Create a paragraph element
     const horoscopeDes = document.createElement("p");
     // Add the horoscope description
     horoscopeDes.innerText = fortune.description;
-    console.log(horoscopeDes);
+    // console.log(horoscopeDes);
     // Add the horoscope lucky numbers
     // const horoscopeNum = document.createElement("p");
     // horoscopeNum.innerText = fortune.lucky_number;
@@ -86,7 +86,7 @@ horoApp.displayHoroscope = function (fortune) {
     // Adding the p to the li
     horoContainer.appendChild(horoscopeDes);
     // horoContainer.appendChild(horoscopeNum);
-    console.log(horoContainer);
+    // console.log(horoContainer);
     // Appending the horoContainer li to the ul (by queryselecting selecting its id=horoFortune)
     document.querySelector("#horoFortune").append(horoContainer);
 
@@ -94,15 +94,26 @@ horoApp.displayHoroscope = function (fortune) {
 
 // This is the function that will get us the user's input
 horoApp.getUserInput = function () {
-    document.querySelector("#starSign").addEventListener("change", function () {
-        const selection = this.value;
-        console.log(selection);
-        horoApp.getHoroscope(selection);
-    })
+    // Targeting the id=starSign attribute and assigning it to the 'const selectHoroscope' variable
+    // Then want to store the value of the chosen star sign (ie. selectHoroscope.value) in the 'const selection' variable
+    // Last, want to call the 'horoApp.getHoroscope' function with 'selection' taken as its argument
+    const selectHoroscope = document.querySelector("#starSign");
+    const selection = selectHoroscope.value;
+    // console.log(selection);
+    horoApp.getHoroscope(selection);
+
+
+    // document.querySelector("#starSign").addEventListener("change", function () {
+    //     const choice = this.value;
+    // console.log(selection);
+    // horoApp.getHoroscope(choice);
+    // the user's (choice) will then be passed into the horoApp.getHoroscope as an argument (which we choose to be 'astroSign')
+    // })
 }
 
+// Created our init method
+// This is where we will store our code/function that need to run on the page load
 horoApp.init = function () {
-    // horoApp.getHoroscope();
     horoApp.getUserInput();
 }
 
