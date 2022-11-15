@@ -129,5 +129,3 @@ horoApp.init = function () {
 
 // Call the init method to get the ball rolling
 horoApp.init();
-
-
