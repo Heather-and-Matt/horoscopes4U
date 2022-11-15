@@ -1,4 +1,3 @@
-
 //  PSEUDOCODE 
 
 // Create a horoscope app object that gives users present-day horoscope (horoApp).
