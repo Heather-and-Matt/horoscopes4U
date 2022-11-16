@@ -111,16 +111,22 @@ horoApp.getUserInput = function () {
     // const selection = selectHoroscope.value;
     // console.log(selection);
     // horoApp.getHoroscope(selection);
+    const formEl = document.querySelector('form')
+    formEl.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const userInput = document.querySelector('#starSign').value;
+        console.log(userInput);
+        // console.log(event);
+        horoApp.getHoroscope(userInput);
 
 
-    document.querySelector("#starSign").addEventListener("change", function () {
-        const choice = this.value;
-        console.log(choice);
-        horoApp.getHoroscope(choice);
-        // the user's (choice) will then be passed into the horoApp.getHoroscope as an argument (which we choose to be 'astroSign')
     });
 };
-
+const form = document.querySelector('form')
+form.addEventListener('submit', (event) => {
+    event.preventDefault()
+    console.log(event);
+})
 // Created our init method
 // This is where we will store our code/function that need to run on the page load
 horoApp.init = function () {
