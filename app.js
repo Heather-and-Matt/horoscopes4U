@@ -107,18 +107,18 @@ horoApp.getUserInput = function () {
     // Targeting the id=starSign attribute and assigning it to the 'const selectHoroscope' variable
     // Then want to store the value of the chosen star sign (ie. selectHoroscope.value) in the 'const selection' variable
     // Last, want to call the 'horoApp.getHoroscope' function with 'selection' taken as its argument
-    const selectHoroscope = document.querySelector("#starSign");
-    const selection = selectHoroscope.value;
+    // const selectHoroscope = document.querySelector("#starSign");
+    // const selection = selectHoroscope.value;
     // console.log(selection);
-    horoApp.getHoroscope(selection);
+    // horoApp.getHoroscope(selection);
 
 
-    // document.querySelector("#starSign").addEventListener("change", function () {
-    //     const choice = this.value;
-    // console.log(selection);
-    // horoApp.getHoroscope(choice);
-    // the user's (choice) will then be passed into the horoApp.getHoroscope as an argument (which we choose to be 'astroSign')
-    // })
+    document.querySelector("#starSign").addEventListener("change", function () {
+        const choice = this.value;
+        console.log(choice);
+        horoApp.getHoroscope(choice);
+        // the user's (choice) will then be passed into the horoApp.getHoroscope as an argument (which we choose to be 'astroSign')
+    })
 }
 
 // Created our init method
