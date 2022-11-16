@@ -121,11 +121,23 @@ horoApp.getUserInput = function () {
     })
 }
 
+const btn = document.createElement("button");
+btn.innerHTML = "Submit!";
+btn.type = "submit";
+btn.addEventListener("click", function() {
+})
+document.body.appendChild(btn);
+
+
+
+
+
 // Created our init method
 // This is where we will store our code/function that need to run on the page load
 horoApp.init = function () {
     horoApp.getUserInput();
 }
+
 
 // Call the init method to get the ball rolling
 horoApp.init();
