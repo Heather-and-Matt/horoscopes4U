@@ -117,6 +117,8 @@ horoApp.getUserInput = function () {
     horoApp.getHoroscope(userInput)
     })
 
+
+ 
 }
 
 // Created our init method
