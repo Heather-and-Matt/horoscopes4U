@@ -107,30 +107,17 @@ horoApp.getUserInput = function () {
     // Targeting the id=starSign attribute and assigning it to the 'const selectHoroscope' variable
     // Then want to store the value of the chosen star sign (ie. selectHoroscope.value) in the 'const selection' variable
     // Last, want to call the 'horoApp.getHoroscope' function with 'selection' taken as its argument
-    // const selectHoroscope = document.querySelector("#starSign");
-    // const selection = selectHoroscope.value;
-    // // console.log(selection);
-    // horoApp.getHoroscope(selection);
 
 
-    document.querySelector("#starSign").addEventListener("change", function () {
-        const choice = this.value;
-    console.log(choice);
-    horoApp.getHoroscope(choice);
-    //the user's (choice) will then be passed into the horoApp.getHoroscope as an argument (which we choose to be 'astroSign')
+    const form = document.querySelector('form')
+    form.addEventListener("submit", (event) => {
+        event.preventDefault()
+    
+    const userInput = document.querySelector("#starSign").value
+    horoApp.getHoroscope(userInput)
     })
+
 }
-
-const btn = document.createElement("button");
-btn.innerHTML = "Submit!";
-btn.type = "submit";
-btn.addEventListener("click", function() {
-})
-document.body.appendChild(btn);
-
-
-
-
 
 // Created our init method
 // This is where we will store our code/function that need to run on the page load
@@ -141,3 +128,4 @@ horoApp.init = function () {
 
 // Call the init method to get the ball rolling
 horoApp.init();
+
