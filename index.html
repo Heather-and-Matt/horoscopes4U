@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Horoscope</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 
 <body>
     <header>
-        <h1>Daily Horoscope for you!</h1> <img src="" alt="">
+        <!-- <img src="./assets/background.jpg" alt="starry night"> -->
+        <h1>Daily Horoscope for you!</h1>
+        <p>Find your sign below!</p>
     </header>
     <main>
         <!-- Signs and birthdays -->
-        <!-- Signs and birthdays -->
-        <p>Find your sign below!</p>
         <div class="wrapper">
-            <ul>
-                <li> <img src="" alt="">
+            <ul class="gallery">
+                <li>
+                    <img src="" alt="">
+
                     <h2>Aries</h2>
                     <p>Mar 21 - Apr 19</p>
                 </li>
@@ -82,7 +86,7 @@
                 <form action="submit">
                     <label for="starSign">Select your sign:</label>
                     <select name="starSign" id="starSign">
-                        <option value="none">Select an Option</option>
+                        <option value="none" selected disabled hidden>Select an Option</option>
                         <option value="aries">Aries</option>
                         <option value="taurus">Taurus</option>
                         <option value="gemini">Gemini</option>
@@ -96,7 +100,7 @@
                         <option value="aquarius">Aquarius</option>
                         <option value="pisces">Pisces</option>
                     </select>
-                    <div class="submit"></div>
+                    <button type="submit"></button>
                 </form>
             </section>
         </div> <!-- Wrapper closing div -->
@@ -107,8 +111,9 @@
         </div>
     </main>
     <footer>
-
+        <p>Created at<a href="www.junocollege.com"> Juno College</a> by Heather & Matt</p>
     </footer>
+    <!-- JS script -->
+    <script src="app.js"></script>
 </body>
-
 </html>
