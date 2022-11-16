@@ -8,22 +8,6 @@ img {
   max-width: 100%;
 }
 
-ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.textContainer {
-  text-align: center;
-}
-
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;

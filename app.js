@@ -118,8 +118,8 @@ horoApp.getUserInput = function () {
         console.log(choice);
         horoApp.getHoroscope(choice);
         // the user's (choice) will then be passed into the horoApp.getHoroscope as an argument (which we choose to be 'astroSign')
-    })
-}
+    });
+};
 
 // Created our init method
 // This is where we will store our code/function that need to run on the page load
@@ -137,7 +137,7 @@ horoApp.init = function () {
     //         horoApp.getUserInput();
     //     });
     // }
-}
+};
 
-// Call the init method to get the ball rolling
+// all the init method to get the ball rolling
 horoApp.init();
