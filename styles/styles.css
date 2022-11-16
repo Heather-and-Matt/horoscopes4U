@@ -8,6 +8,39 @@ img {
   max-width: 100%;
 }
 
+body {
+  font-family: "Raleway", sans-serif;
+}
+
+header {
+  background-image: url(../assets/background.jpg);
+  background-size: cover;
+}
+header p {
+  color: white;
+  text-align: center;
+  padding: 50px 0px 100px 0px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  padding-top: 150px;
+}
+
+.gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -29,7 +62,7 @@ section {
 
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
+  margin: 0px;
 }
 
 figcaption,
