@@ -119,6 +119,7 @@ horoApp.getUserInput = function () {
     })
 };
 
+
 // Created our init method
 // This is where we will store our code/function that need to run on the page load
 horoApp.init = function () {
