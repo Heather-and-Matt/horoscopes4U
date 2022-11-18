@@ -15,6 +15,7 @@ body {
 header {
   background-image: url(../assets/background.jpg);
   background-size: cover;
+  opacity: 0.8;
 }
 header p {
   color: white;
@@ -28,6 +29,10 @@ h1 {
   padding-top: 150px;
 }
 
+h2 {
+  text-align: center;
+}
+
 .gallery {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -39,6 +44,10 @@ h1 {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+}
+
+footer {
+  text-align: center;
 }
 
 html {

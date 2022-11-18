@@ -86,8 +86,6 @@ horoApp.displayHoroscope = function (fortune) {
     horoscopeDes.innerText = fortune.description;
     // console.log(horoscopeDes);
     // Add the horoscope lucky numbers
-    // const horoscopeNum = document.createElement("p");
-    // horoscopeNum.innerText = fortune.lucky_number;
     // console.log(horoscopeNum);
     //creating li container
     const horoContainer = document.createElement("li");
@@ -107,26 +105,15 @@ horoApp.getUserInput = function () {
     // Targeting the id=starSign attribute and assigning it to the 'const selectHoroscope' variable
     // Then want to store the value of the chosen star sign (ie. selectHoroscope.value) in the 'const selection' variable
     // Last, want to call the 'horoApp.getHoroscope' function with 'selection' taken as its argument
-    // const selectHoroscope = document.querySelector("#starSign");
-    // const selection = selectHoroscope.value;
-    // console.log(selection);
-    // horoApp.getHoroscope(selection);
-    const formEl = document.querySelector('form')
-    formEl.addEventListener('submit', (event) => {
+    const form = document.querySelector('form')
+    form.addEventListener("submit", (event) => {
         event.preventDefault()
-        const userInput = document.querySelector('#starSign').value;
-        console.log(userInput);
-        // console.log(event);
-        horoApp.getHoroscope(userInput);
+        const userInput = document.querySelector("#starSign").value
+        horoApp.getHoroscope(userInput)
+    })
 
+}
 
-    });
-};
-const form = document.querySelector('form')
-form.addEventListener('submit', (event) => {
-    event.preventDefault()
-    console.log(event);
-})
 // Created our init method
 // This is where we will store our code/function that need to run on the page load
 horoApp.init = function () {
