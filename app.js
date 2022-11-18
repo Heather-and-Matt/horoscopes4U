@@ -70,8 +70,6 @@ horoApp.getHoroscope = function (astroSign) {
                 alert("Something went wrong. No idea what. Trying my best")
             }
         });
-    // .then() x 2
-    // .json()
 };
 
 
@@ -82,18 +80,29 @@ horoApp.displayHoroscope = function (fortune) {
 
     // Create a paragraph element
     const horoscopeDes = document.createElement("p");
+    horoscopeDes.classList.add("fortuneP");
     // Add the horoscope description
     horoscopeDes.innerText = fortune.description;
+<<<<<<< HEAD
     // console.log(horoscopeDes);
     // Add the horoscope lucky numbers
     // console.log(horoscopeNum);
+=======
+
+    // // Create a paragraph element
+    // const horoscopeMood = document.createElement("p");
+    // horoscopeMood.classList.add("moodP");
+    // // Add the horoscope description
+    // horoscopeMood.innerText = fortune.mood;
+
+>>>>>>> main
     //creating li container
     const horoContainer = document.createElement("li");
     // Creating a class on the li element
     horoContainer.classList.add("fortune");
     // Adding the p to the li
     horoContainer.appendChild(horoscopeDes);
-    // horoContainer.appendChild(horoscopeNum);
+    // horoContainer.appendChild(horoscopeMood);
     // console.log(horoContainer);
     // Appending the horoContainer li to the ul (by queryselecting selecting its id=horoFortune)
     document.querySelector("#horoFortune").append(horoContainer);
@@ -111,8 +120,12 @@ horoApp.getUserInput = function () {
         const userInput = document.querySelector("#starSign").value
         horoApp.getHoroscope(userInput)
     })
+};
 
+<<<<<<< HEAD
 }
+=======
+>>>>>>> main
 
 // Created our init method
 // This is where we will store our code/function that need to run on the page load

@@ -5,26 +5,49 @@ body {
 }
 
 header {
-    background-image: url(../assets/background.jpg);
     background-size: cover;
+<<<<<<< HEAD
     opacity: 0.8;
+=======
+    overflow: hidden;
+    position: relative;
+>>>>>>> main
 
     p {
         color: white;
         text-align: center;
-        padding: 50px 0px 100px 0px;
+        padding-bottom: 10px;
+        position: relative;
+        z-index: 20;
+    }
+
+    img {
+        opacity: 0.8;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        z-index: 0;
     }
 }
 
 h1 {
     text-align: center;
     color: white;
+<<<<<<< HEAD
     padding-top: 150px;
 
 }
 
 h2 {
     text-align: center;
+=======
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+    z-index: 20;
+>>>>>>> main
 }
 
 .gallery {
@@ -33,8 +56,51 @@ h2 {
     justify-content: space-evenly;
 }
 
+<<<<<<< HEAD
 footer {
     text-align: center;
 }
 
 .aries {}
+=======
+li img {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+h2 {
+    color: white;
+    position: relative;
+    z-index: 20;
+}
+
+li {
+    list-style: none;
+}
+
+.instructions {
+    display: flex;
+    flex-direction: row;
+}
+
+.mainImg {
+    height: 50px;
+}
+
+.imgContainer {
+    width: 50%;
+}
+
+.textContainer {
+    width: 50%;
+}
+
+h3 {
+    margin-top: 50px;
+}
+
+footer {
+    margin-top: 100px;
+}
+>>>>>>> main
