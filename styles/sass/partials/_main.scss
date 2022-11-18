@@ -18,7 +18,7 @@ header {
     }
 
     img {
-        opacity: 0.8;
+        opacity: 0.6;
         position: absolute;
         left: 0;
         top: 0;
@@ -59,13 +59,20 @@ li {
     list-style: none;
 }
 
+.headerP {
+    color: white;
+    font-size: 1.4rem;
+    padding: 70px 0px 10px 0px;
+}
+
 .instructions {
     display: flex;
     flex-direction: row;
 }
 
 .mainImg {
-    height: 50px;
+    height: 600px;
+    width: 100%;
 }
 
 .imgContainer {
@@ -80,6 +87,11 @@ h3 {
     margin-top: 50px;
 }
 
+button {
+    font-family: variables.$primaryFont;
+}
+
 footer {
     margin-top: 100px;
+    text-align: center;
 }

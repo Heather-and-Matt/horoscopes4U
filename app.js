@@ -79,24 +79,25 @@ horoApp.displayHoroscope = function (fortune) {
     // console.log(fortune);
 
     // Create a paragraph element
+    const horoscopeDate = document.createElement("p");
+    horoscopeDate.classList.add("dateP");
+    // Add the horoscope description
+    horoscopeDate.innerText = fortune.current_date;
+
+    // Create a paragraph element
     const horoscopeDes = document.createElement("p");
     horoscopeDes.classList.add("fortuneP");
     // Add the horoscope description
     horoscopeDes.innerText = fortune.description;
 
-    // // Create a paragraph element
-    // const horoscopeMood = document.createElement("p");
-    // horoscopeMood.classList.add("moodP");
-    // // Add the horoscope description
-    // horoscopeMood.innerText = fortune.mood;
 
     //creating li container
     const horoContainer = document.createElement("li");
     // Creating a class on the li element
     horoContainer.classList.add("fortune");
     // Adding the p to the li
+    horoContainer.appendChild(horoscopeDate);
     horoContainer.appendChild(horoscopeDes);
-    // horoContainer.appendChild(horoscopeMood);
     // console.log(horoContainer);
     // Appending the horoContainer li to the ul (by queryselecting selecting its id=horoFortune)
     document.querySelector("#horoFortune").append(horoContainer);
