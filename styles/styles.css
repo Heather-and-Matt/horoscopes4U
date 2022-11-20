@@ -14,12 +14,8 @@ body {
 
 header {
   background-size: cover;
-<<<<<<< HEAD
-  opacity: 0.8;
-=======
   overflow: hidden;
   position: relative;
->>>>>>> main
 }
 header p {
   color: white;
@@ -47,10 +43,6 @@ h1 {
   z-index: 20;
 }
 
-h2 {
-  text-align: center;
-}
-
 .gallery {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -64,10 +56,6 @@ h2 {
           justify-content: space-evenly;
 }
 
-<<<<<<< HEAD
-footer {
-  text-align: center;
-=======
 li img {
   width: 50px;
   height: 50px;
@@ -80,8 +68,18 @@ h2 {
   z-index: 20;
 }
 
+#moodChoice h2 {
+  color: black;
+}
+
 li {
   list-style: none;
+}
+
+.formSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .instructions {
@@ -106,13 +104,18 @@ li {
   width: 50%;
 }
 
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+  margin-top: 25px;
+  border: none;
+}
+
 h3 {
   margin-top: 50px;
 }
 
 footer {
   margin-top: 100px;
->>>>>>> main
 }
 
 html {

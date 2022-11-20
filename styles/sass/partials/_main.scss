@@ -6,12 +6,8 @@ body {
 
 header {
     background-size: cover;
-<<<<<<< HEAD
-    opacity: 0.8;
-=======
     overflow: hidden;
     position: relative;
->>>>>>> main
 
     p {
         color: white;
@@ -35,19 +31,10 @@ header {
 h1 {
     text-align: center;
     color: white;
-<<<<<<< HEAD
-    padding-top: 150px;
-
-}
-
-h2 {
-    text-align: center;
-=======
     padding-top: 50px;
     padding-bottom: 50px;
     position: relative;
     z-index: 20;
->>>>>>> main
 }
 
 .gallery {
@@ -56,17 +43,11 @@ h2 {
     justify-content: space-evenly;
 }
 
-<<<<<<< HEAD
-footer {
-    text-align: center;
-}
-
-.aries {}
-=======
 li img {
     width: 50px;
     height: 50px;
     position: relative;
+
 }
 
 h2 {
@@ -75,13 +56,24 @@ h2 {
     z-index: 20;
 }
 
+#moodChoice h2 {
+    color: black;
+}
+
 li {
     list-style: none;
+
+}
+
+.formSection {
+    display: flex;
+    // flex-direction: row-reverse;
 }
 
 .instructions {
     display: flex;
     flex-direction: row;
+
 }
 
 .mainImg {
@@ -96,6 +88,12 @@ li {
     width: 50%;
 }
 
+fieldset {
+    padding: 0.35em 0.75em 0.625em;
+    margin-top: 25px;
+    border: none;
+}
+
 h3 {
     margin-top: 50px;
 }
@@ -103,4 +101,3 @@ h3 {
 footer {
     margin-top: 100px;
 }
->>>>>>> main

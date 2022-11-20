@@ -53,13 +53,17 @@ horoApp.getHoroscope = function (astroSign) {
             }
         })
         .then(function (jsonData) {
-            console.log(jsonData);
-            // The parsed JSON data is then received by this .then callback function from the previous .then as its parameter. Now we can use it in this callback like any other object
-            // We are targetting the id=horoscope tag and setting the HTML of it to a blank string
             // console.log(jsonData);
-            document.querySelector("#horoFortune").innerHTML = "";
+            // The parsed JSON data is then received by this .then callback function from the previous .then as its parameter. Now we can use it in this callback function like any other object
 
+            // We are targetting the id=horoFortune tag and setting the HTML of it to a blank string so that the horoscope description for a chosen zodiac sign disappears when another zodiac sign is chosen and submit button is clicked
+            document.querySelector("#horoFortune").innerHTML = "";
+            // JSON data is taken in as a parameter in the horoApp.displayHoroscope function
             horoApp.displayHoroscope(jsonData);
+            // Also want to clear out the text from what gets displayed on the page if the user wants to look at the other options associated with each zodiac sign
+            document.querySelector("#horoOptions").innerHTML = "";
+
+
         })
         // The error is caught here and we pass what was thrown into the .catch() method and an alert will be sent to user depending on the error
         .catch(function (err) {
@@ -73,77 +77,82 @@ horoApp.getHoroscope = function (astroSign) {
 };
 
 
-// Create a function to display our horocope to the page
-// horoApp.displayHoroscope()
+// Create a function to display our horocope to the page that takes in 'fortune' as its parameter
 horoApp.displayHoroscope = function (fortune) {
-    // console.log(fortune);
-
     // Create a paragraph element
     const horoscopeDes = document.createElement("p");
     horoscopeDes.classList.add("fortuneP");
     // Add the horoscope description
     horoscopeDes.innerText = fortune.description;
-<<<<<<< HEAD
-    // console.log(horoscopeDes);
-    // Add the horoscope lucky numbers
-    // console.log(horoscopeNum);
-=======
-
-    // // Create a paragraph element
-    // const horoscopeMood = document.createElement("p");
-    // horoscopeMood.classList.add("moodP");
-    // // Add the horoscope description
-    // horoscopeMood.innerText = fortune.mood;
-
->>>>>>> main
     //creating li container
     const horoContainer = document.createElement("li");
-    // Creating a class on the li element
+    // Creating a class on the li element called .fortune
     horoContainer.classList.add("fortune");
     // Adding the p to the li
     horoContainer.appendChild(horoscopeDes);
-    // horoContainer.appendChild(horoscopeMood);
-    // console.log(horoContainer);
-    // Appending the horoContainer li to the ul (by queryselecting selecting its id=horoFortune)
+    // Appending the horoContainer li to the ul (by queryselecting selecting its id=horoFortune tag)
     document.querySelector("#horoFortune").append(horoContainer);
-
+    // Now that we have everything we need for displaying our chosen horoscope on the page, let's call the function horoApp.getuserFormOptions, using 'fortune' as its parameter so that function has the JSON objects from the API call
+    horoApp.getUserFormOptions(fortune);
+    // Submit button for the other horoscope options is now enabled now that the user has properly chosen a zodiac sign and clicked the submit button
+    function enableOptsBtn() {
+        document.querySelector('#optsBtn').disabled = false;
+    }
+    enableOptsBtn();
 };
+// Create a function to display the other options associated with each zodiac sign that is totally optional to the user, but can only be accessed if the user choses and submits a zodiac sign first
+horoApp.getUserFormOptions = function (horoscopeChoice) {
+
+    // Targeting the id=formOptions attribute and assigning it to the 'const formOptions' variable
+    const formOptions = document.querySelector('#formOptions')
+    formOptions.addEventListener("submit", (event) => {
+        // Registering 'formOptions' to listen for a particular event by attaching an 'addEventListener' method.
+        // Want to prevent a new page request when we submit by using the 'preventDefault()' function
+        // User's choice of their zodiac sign options value is assigned to the 'userOptionsInput' variable
+        event.preventDefault();
+        const userOptionsInput = document.querySelector("#starMood").value;
+        // Create a paragraph element
+        const horoscopeOption = document.createElement("p");
+        // Adding a class of .otherP to the paragraph element
+        horoscopeOption.classList.add("otherP");
+        // Adding the chosen horoscope to the paragraph element
+        horoscopeOption.innerText = horoscopeChoice[userOptionsInput];
+        // Creating a 'li' container
+        const optionContainer = document.createElement("li");
+        // Creating a class on the 'li' element called .fortuneOption
+        optionContainer.classList.add("fortuneOption");
+        // Adding the 'p' to the 'li'
+        optionContainer.appendChild(horoscopeOption);
+        // Also want to clear out the text from what gets displayed on the page if the user wants to look at the other options associated with each zodiac sign
+        document.querySelector("#horoOptions").innerHTML = "";
+        // Appending the 'li' to the 'ul' (by queryselecting it's 'id=horoOptions tag) 
+        document.querySelector("#horoOptions").append(optionContainer);
+
+
+    })
+}
 
 // This is the function that will get us the user's input
 horoApp.getUserInput = function () {
-    // Targeting the id=starSign attribute and assigning it to the 'const selectHoroscope' variable
-    // Then want to store the value of the chosen star sign (ie. selectHoroscope.value) in the 'const selection' variable
-    // Last, want to call the 'horoApp.getHoroscope' function with 'selection' taken as its argument
-    const form = document.querySelector('form')
+    // Targeting the id=formSign attribute and assigning it to the 'const form' variable
+    const form = document.querySelector('#formSign')
+    // Registering 'form' to listen for a particular event by attaching an 'addEventListener' method.
+    // Want to prevent a new page request when we submit by using the 'preventDefault()' function
+    // User's choice of zodiac sign value is assigned to the 'userInput' variable
+    // 'horoApp.getHoroscope() function called taking in the 'userInput' as its parameter
     form.addEventListener("submit", (event) => {
-        event.preventDefault()
-        const userInput = document.querySelector("#starSign").value
-        horoApp.getHoroscope(userInput)
+        event.preventDefault();
+        const userInput = document.querySelector("#starSign").value;
+        horoApp.getHoroscope(userInput);
     })
-};
-
-<<<<<<< HEAD
 }
-=======
->>>>>>> main
-
 // Created our init method
 // This is where we will store our code/function that need to run on the page load
 horoApp.init = function () {
     horoApp.getUserInput();
+    // horoApp.getUserFormOptions();
 
-    // horoApp.init = function () {
-    //     //Create a button element
-    //     const button = document.createElement('button');
-    //     //Set the text of the button
-    //     button.innerText = 'Submit!';
-    //     //Add an event listener for the "click" event
-    //     document.querySelector('.submit').appendChild(button);
-    //     document.querySelector('button').addEventListener('click', () => {
-    //         horoApp.getUserInput();
-    //     });
-    // }
-};
-
+    // horoApp.getUserInputOther();
+}
 // all the init method to get the ball rolling
 horoApp.init();
