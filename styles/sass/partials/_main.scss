@@ -69,7 +69,6 @@ li {
     padding: 70px 0px 30px 0px;
 }
 
-
 .formSection {
     margin: 50px 100px 50px 140px;
     color: white;
@@ -110,12 +109,6 @@ footer {
     font-family: variables.$primaryFont;
 }
 
-
 .myButton, .myOtherButton {
     font-family: variables.$primaryFont;
-}
-
-select:focus {
-    border-color: gray;
-    outline: none;
 }

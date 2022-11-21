@@ -57,41 +57,35 @@ horoApp.displayHoroscope = function (fortune) {
     horoContainer.classList.add("fortune");
     horoContainer.appendChild(horoscopeDate);
     horoContainer.appendChild(horoscopeDes);
+
     document.querySelector("#horoFortune").append(horoContainer);
 
     horoApp.getUserFormOptions(fortune);
 };
 
-// Create a function to display the other options associated with each zodiac sign that is totally optional to the user, but can only be accessed if the user choses and submits a zodiac sign first
+// Extra options display function
 horoApp.getUserFormOptions = function (horoscopeChoice) {
-    // Submit button for the other horoscope options is now enabled now that the user has properly chosen a zodiac sign and clicked the submit button
+
     function enableOptsBtn() {
     document.querySelector('#optsBtn').disabled = false;
     }
     enableOptsBtn();
-    // Targeting the id=formOptions attribute and assigning it to the 'const formOptions' variable
+
     const formOptions = document.querySelector('#formOptions')
     formOptions.addEventListener("submit", (event) => {
-        // Registering 'formOptions' to listen for a particular event (submit) by attaching an 'addEventListener' method.
-        // Want to prevent a new page request when we submit by using the 'preventDefault()' function
-        // User's choice of their zodiac sign options value is assigned to the 'userOptionsInput' variable
     event.preventDefault();
+
     const userOptionsInput = document.querySelector("#starMood").value;
-        // Create a paragraph element
+
     const horoscopeOption = document.createElement("p");
-        // Adding a class of .otherP to the paragraph element
     horoscopeOption.classList.add("otherP");
-        // Adding the chosen horoscope to the paragraph element
     horoscopeOption.innerText = horoscopeChoice[userOptionsInput];
-        // Creating a 'li' container
+
     const optionContainer = document.createElement("li");
-        // Creating a class on the 'li' element called .fortuneOption
     optionContainer.classList.add("fortuneOption");
-        // Adding the 'p' to the 'li'
     optionContainer.appendChild(horoscopeOption);
-        // Also want to clear out the text from what gets displayed on the page if the user wants to look at the other options associated with each zodiac sign
+
     document.querySelector("#horoOptions").innerHTML = "";
-        // Appending the 'li' to the 'ul' (by queryselecting it's 'id=horoOptions tag) 
     document.querySelector("#horoOptions").append(optionContainer);
     })
 };

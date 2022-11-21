@@ -128,11 +128,6 @@ footer {
   font-family: "Raleway", sans-serif;
 }
 
-select:focus {
-  border-color: gray;
-  outline: none;
-}
-
 @media (max-width: 830px) {
   .gallery {
     display: -webkit-box;
