@@ -1,51 +1,27 @@
-//  PSEUDOCODE 
 
-// Create a horoscope app object that gives users present-day horoscope (horoApp).
-
-// Letting the user choose their horoscope from a drop down menu holding all 12 astrological signs
-// When mouse or keyboards clicks on the 'submit' button, our method (getUserInput) gets the users selection and updates the variable (selection).
-// Create a method (horoApp.getHoroscope) that makes API calls using the fetch() method, and is passed the user selection as a parameter (astroSign)
-// Then make our Fetch API call
-// If our API call is successful, our results (chosen horoscope description) will be displayed on a paragraph element in a 'li', which in turn is in a 'ul' with an id="horoFortune"
-// If the user wants to get a horoscope for another astrological sign, the previous horoscope description will clear (("#horoFortune").innerHTML = "";) to make way for the new horoscope description
-// If the API call fails, display an error message
-
-// Create an init method (horoApp.init) to get the ball rolling in the set up of the app.
-// - calls the local method (getUserInput) after the submit button is clicked after user has chosen astrological sign.
-
-
-
-
-// Namespace object for our app:
+// Namespace object
 const horoApp = {};
 
-// Let's save our api key and the endpoint we want to hit to properties on our namespace object, so that we have them easily available to reference throughout our code:
+// API endpoint
 horoApp.endpoint = `https://aztro.sameerkumar.website/`;
 
 // Method to go get horoscope from aztro API
 horoApp.getHoroscope = function (astroSign) {
 
-    // Using the URL() contructor to get a new object back without endpoint url in it. This simplifies it for us to add on things like query parameters
+    // Using the URL() constructor to get a new object back 
     const url = new URL(horoApp.endpoint);
-    // console.log(url);
 
-    // search parameters
+    // Search parameters
     url.search = new URLSearchParams({
         sign: astroSign,
         day: "today",
     });
 
-    //Taking our url object, ready to use full url, including query params, and we're going to use this to call the API using fetch.
+    // Fetch call to API
     fetch(url, {
         method: 'POST'
     })
         .then(function (response) {
-            // After getting API response, a response object is passed to .then's callback function. We then need to parse this object for our JSON data. 
-            // console.log(response);
-            // To do this we call built-in .json() method into the response object and then return the result of our callback
-            // console.log(response.json())
-            // We also want to throw an error in case our fetch() call is unsuccessful (i.e. response.ok is false.)
-            // To do this we want to skip over running the second .then() and instead have another function execute some error handling behaviour
             if (response.ok) {
                 return response.json();
             } else {
@@ -53,17 +29,11 @@ horoApp.getHoroscope = function (astroSign) {
             }
         })
         .then(function (jsonData) {
-            console.log(jsonData);
-            // The parsed JSON data is then received by this .then callback function from the previous .then as its parameter. Now we can use it in this callback like any other object
-            // We are targetting the id=horoscope tag and setting the HTML of it to a blank string
-            // console.log(jsonData);
             document.querySelector("#horoFortune").innerHTML = "";
-
             horoApp.displayHoroscope(jsonData);
+            document.querySelector("#horoOptions").innerHTML = "";
         })
-        // The error is caught here and we pass what was thrown into the .catch() method and an alert will be sent to user depending on the error
         .catch(function (err) {
-            // console.log(err);
             if (err.message === "Bad Request") {
                 alert("We couldn't find a match for that day! Please choose yesterday, today or tomorrow")
             } else {
@@ -72,44 +42,56 @@ horoApp.getHoroscope = function (astroSign) {
         });
 };
 
-
-// Create a function to display our horocope to the page
-// horoApp.displayHoroscope()
+// Horoscope display function
 horoApp.displayHoroscope = function (fortune) {
-    // console.log(fortune);
 
-    // Create a paragraph element
+    const horoscopeDate = document.createElement("p");
+    horoscopeDate.classList.add("dateP");
+    horoscopeDate.innerText = fortune.current_date;
+
     const horoscopeDes = document.createElement("p");
     horoscopeDes.classList.add("fortuneP");
-    // Add the horoscope description
     horoscopeDes.innerText = fortune.description;
 
-    // // Create a paragraph element
-    // const horoscopeMood = document.createElement("p");
-    // horoscopeMood.classList.add("moodP");
-    // // Add the horoscope description
-    // horoscopeMood.innerText = fortune.mood;
-
-    //creating li container
     const horoContainer = document.createElement("li");
-    // Creating a class on the li element
     horoContainer.classList.add("fortune");
-    // Adding the p to the li
+    horoContainer.appendChild(horoscopeDate);
     horoContainer.appendChild(horoscopeDes);
-    // horoContainer.appendChild(horoscopeMood);
-    // console.log(horoContainer);
-    // Appending the horoContainer li to the ul (by queryselecting selecting its id=horoFortune)
+
     document.querySelector("#horoFortune").append(horoContainer);
 
+    horoApp.getUserFormOptions(fortune);
 };
 
-// This is the function that will get us the user's input
+// Extra options display function
+horoApp.getUserFormOptions = function (horoscopeChoice) {
+
+    function enableOptsBtn() {
+    document.querySelector('#optsBtn').disabled = false;
+    }
+    enableOptsBtn();
+
+    const formOptions = document.querySelector('#formOptions')
+    formOptions.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const userOptionsInput = document.querySelector("#starMood").value;
+
+    const horoscopeOption = document.createElement("p");
+    horoscopeOption.classList.add("otherP");
+    horoscopeOption.innerText = horoscopeChoice[userOptionsInput];
+
+    const optionContainer = document.createElement("li");
+    optionContainer.classList.add("fortuneOption");
+    optionContainer.appendChild(horoscopeOption);
+
+    document.querySelector("#horoOptions").innerHTML = "";
+    document.querySelector("#horoOptions").append(optionContainer);
+    })
+};
+
+// User input function
 horoApp.getUserInput = function () {
-    // Targeting the id=starSign attribute and assigning it to the 'const selectHoroscope' variable
-    // Then want to store the value of the chosen star sign (ie. selectHoroscope.value) in the 'const selection' variable
-    // Last, want to call the 'horoApp.getHoroscope' function with 'selection' taken as its argument
-
-
     const form = document.querySelector('form')
     form.addEventListener("submit", (event) => {
         event.preventDefault()
@@ -119,14 +101,13 @@ horoApp.getUserInput = function () {
     })
 };
 
+// Init function
 
-// Created our init method
-// This is where we will store our code/function that need to run on the page load
 horoApp.init = function () {
     horoApp.getUserInput();
 }
 
 
-// Call the init method to get the ball rolling
+// Init call
 horoApp.init();
 
