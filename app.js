@@ -94,19 +94,19 @@ horoApp.displayHoroscope = function (fortune) {
     document.querySelector("#horoFortune").append(horoContainer);
     // Now that we have everything we need for displaying our chosen horoscope on the page, let's call the function horoApp.getuserFormOptions, using 'fortune' as its parameter so that function has the JSON objects from the API call
     horoApp.getUserFormOptions(fortune);
+
+};
+// Create a function to display the other options associated with each zodiac sign that is totally optional to the user, but can only be accessed if the user choses and submits a zodiac sign first
+horoApp.getUserFormOptions = function (horoscopeChoice) {
     // Submit button for the other horoscope options is now enabled now that the user has properly chosen a zodiac sign and clicked the submit button
     function enableOptsBtn() {
         document.querySelector('#optsBtn').disabled = false;
     }
     enableOptsBtn();
-};
-// Create a function to display the other options associated with each zodiac sign that is totally optional to the user, but can only be accessed if the user choses and submits a zodiac sign first
-horoApp.getUserFormOptions = function (horoscopeChoice) {
-
     // Targeting the id=formOptions attribute and assigning it to the 'const formOptions' variable
     const formOptions = document.querySelector('#formOptions')
     formOptions.addEventListener("submit", (event) => {
-        // Registering 'formOptions' to listen for a particular event by attaching an 'addEventListener' method.
+        // Registering 'formOptions' to listen for a particular event (submit) by attaching an 'addEventListener' method.
         // Want to prevent a new page request when we submit by using the 'preventDefault()' function
         // User's choice of their zodiac sign options value is assigned to the 'userOptionsInput' variable
         event.preventDefault();
@@ -136,7 +136,7 @@ horoApp.getUserFormOptions = function (horoscopeChoice) {
 horoApp.getUserInput = function () {
     // Targeting the id=formSign attribute and assigning it to the 'const form' variable
     const form = document.querySelector('#formSign')
-    // Registering 'form' to listen for a particular event by attaching an 'addEventListener' method.
+    // Registering 'form' to listen for a particular event (submit) by attaching an 'addEventListener' method.
     // Want to prevent a new page request when we submit by using the 'preventDefault()' function
     // User's choice of zodiac sign value is assigned to the 'userInput' variable
     // 'horoApp.getHoroscope() function called taking in the 'userInput' as its parameter
