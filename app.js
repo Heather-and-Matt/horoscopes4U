@@ -102,6 +102,7 @@ horoApp.getUserInput = function () {
 };
 
 // Init function
+
 horoApp.init = function () {
     horoApp.getUserInput();
 }
