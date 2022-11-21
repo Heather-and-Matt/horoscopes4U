@@ -1,1 +1,21 @@
 @use "./variables";
+
+//DESKTOP STYLING
+
+@media (max-width: 1085px) {
+
+}
+
+//TABLET STYLING
+
+@media (max-width: 830px) {
+.gallery {
+    display: flex;
+    flex-direction: column;
+}
+}
+
+//MOBILE STYLING
+@media (max-width: 480px) {
+
+}
