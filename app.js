@@ -57,36 +57,69 @@ horoApp.displayHoroscope = function (fortune) {
     horoContainer.classList.add("fortune");
     horoContainer.appendChild(horoscopeDate);
     horoContainer.appendChild(horoscopeDes);
-
     document.querySelector("#horoFortune").append(horoContainer);
-
+    // Now that we have everything we need for displaying our chosen horoscope on the page, let's call the function horoApp.getuserFormOptions, using 'fortune' as its parameter so that function has the JSON objects from the API call
     horoApp.getUserFormOptions(fortune);
+
+
 };
+// Create a function to display the other options associated with each zodiac sign that is totally optional to the user, but can only be accessed if the user choses and submits a zodiac sign first
+horoApp.getUserFormOptions = function (horoscopeChoice) {
+    // Submit button for the other horoscope options is now enabled now that the user has properly chosen a zodiac sign and clicked the submit button
+    function enableOptsBtn() {
+        document.querySelector('#optsBtn').disabled = false;
+    }
+    enableOptsBtn();
+    // Targeting the id=formOptions attribute and assigning it to the 'const formOptions' variable
+    const formOptions = document.querySelector('#formOptions')
+    formOptions.addEventListener("submit", (event) => {
+        // Registering 'formOptions' to listen for a particular event (submit) by attaching an 'addEventListener' method.
+        // Want to prevent a new page request when we submit by using the 'preventDefault()' function
+        // User's choice of their zodiac sign options value is assigned to the 'userOptionsInput' variable
+        event.preventDefault();
+        const userOptionsInput = document.querySelector("#starMood").value;
+        // Create a paragraph element
+        const horoscopeOption = document.createElement("p");
+        // Adding a class of .otherP to the paragraph element
+        horoscopeOption.classList.add("otherP");
+        // Adding the chosen horoscope to the paragraph element
+        horoscopeOption.innerText = horoscopeChoice[userOptionsInput];
+        // Creating a 'li' container
+        const optionContainer = document.createElement("li");
+        // Creating a class on the 'li' element called .fortuneOption
+        optionContainer.classList.add("fortuneOption");
+        // Adding the 'p' to the 'li'
+        optionContainer.appendChild(horoscopeOption);
+        // Also want to clear out the text from what gets displayed on the page if the user wants to look at the other options associated with each zodiac sign
+        document.querySelector("#horoOptions").innerHTML = "";
+        // Appending the 'li' to the 'ul' (by queryselecting it's 'id=horoOptions tag) 
+        document.querySelector("#horoOptions").append(optionContainer)
+    });
+}
 
 // Extra options display function
 horoApp.getUserFormOptions = function (horoscopeChoice) {
-
     function enableOptsBtn() {
-    document.querySelector('#optsBtn').disabled = false;
+        document.querySelector('#optsBtn').disabled = false;
     }
     enableOptsBtn();
 
     const formOptions = document.querySelector('#formOptions')
     formOptions.addEventListener("submit", (event) => {
-    event.preventDefault();
+        event.preventDefault();
 
-    const userOptionsInput = document.querySelector("#starMood").value;
+        const userOptionsInput = document.querySelector("#starMood").value;
 
-    const horoscopeOption = document.createElement("p");
-    horoscopeOption.classList.add("otherP");
-    horoscopeOption.innerText = horoscopeChoice[userOptionsInput];
+        const horoscopeOption = document.createElement("p");
+        horoscopeOption.classList.add("otherP");
+        horoscopeOption.innerText = horoscopeChoice[userOptionsInput];
 
-    const optionContainer = document.createElement("li");
-    optionContainer.classList.add("fortuneOption");
-    optionContainer.appendChild(horoscopeOption);
+        const optionContainer = document.createElement("li");
+        optionContainer.classList.add("fortuneOption");
+        optionContainer.appendChild(horoscopeOption);
 
-    document.querySelector("#horoOptions").innerHTML = "";
-    document.querySelector("#horoOptions").append(optionContainer);
+        document.querySelector("#horoOptions").innerHTML = "";
+        document.querySelector("#horoOptions").append(optionContainer);
     })
 };
 
@@ -94,10 +127,9 @@ horoApp.getUserFormOptions = function (horoscopeChoice) {
 horoApp.getUserInput = function () {
     const form = document.querySelector('form')
     form.addEventListener("submit", (event) => {
-        event.preventDefault()
-    
-    const userInput = document.querySelector("#starSign").value
-    horoApp.getHoroscope(userInput)
+        event.preventDefault();
+        const userInput = document.querySelector("#starSign").value;
+        horoApp.getHoroscope(userInput);
     })
 };
 
@@ -105,9 +137,7 @@ horoApp.getUserInput = function () {
 
 horoApp.init = function () {
     horoApp.getUserInput();
+    // horoApp.getUserFormOptions();
 }
-
-
 // Init call
 horoApp.init();
-
