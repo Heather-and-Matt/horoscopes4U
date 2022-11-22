@@ -1,1 +1,10 @@
 @use "./variables";
+
+
+@media (max-width: 830px) {
+.gallery {
+    display: flex;
+    flex-direction: column;
+}
+}
+
